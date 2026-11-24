@@ -46,6 +46,7 @@ class StudentProfile(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
+        
         return f"StudentProfile: {self.user.username}"
 
 from django.db.models.signals import post_save
@@ -58,7 +59,9 @@ def create_trainer_profile(sender,instance,created,**kwargs):
         TrainerProfile.objects.create(user=instance)
 
 def create_student_profile(sender,instance,created,**kwargs):
+
     if created and instance.role=='student':
+
         StudentProfile.objects.create(user=instance)
 
 
