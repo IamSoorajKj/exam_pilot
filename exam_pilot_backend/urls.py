@@ -23,6 +23,8 @@ from rest_framework.authtoken.views import ObtainAuthToken
 
 from assesment_management.views import AssesmentListCreateView,AssesmentRetrieveUpdateDeleteView
 
+from question_management.views import QuestionCreateView,QuestionRetrieveUpdateDeleteView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 
@@ -42,5 +44,11 @@ urlpatterns = [
     path('trainer/assesments/',AssesmentListCreateView.as_view()),
 
     path('trainer/assesment/<int:pk>/',AssesmentRetrieveUpdateDeleteView.as_view()),
+
+    #question
+
+    path('trainer/assesment/<int:pk>/question/',QuestionCreateView.as_view()),
+    
+    path('question/<int:pk>/',QuestionRetrieveUpdateDeleteView.as_view())
 
 ]

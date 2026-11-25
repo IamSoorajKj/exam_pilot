@@ -48,9 +48,7 @@ class AssesmentRetrieveUpdateDeleteView(RetrieveUpdateDestroyAPIView):
 
   permission_classes=[IsOwner]
 
-  def get_queryset(self):
-
-    return Assesment.objects.filter(trainer=self.request.user)
+  queryset=Assesment.objects.all()
   
   def perform_update(self,serializer):
 
