@@ -33,11 +33,13 @@ class Question(models.Model):
       
             question_instance =   Question.objects.filter(assesment=self.assesment).last()
 
-            if question_instance:
+            if not self.order:
 
-                  self.order = question_instance.order + 1
-            else:
-                  self.order = 1
+                  if question_instance:
+
+                        self.order = question_instance.order + 1
+                  else:
+                        self.order = 1
 
             if not self.slug:
                   self.slug = slugify(self.title)
